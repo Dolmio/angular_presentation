@@ -10,18 +10,14 @@ TYPES = Hash.new("text/plain").merge(
 )
 
 get '/*' do
-  if gist_id
-    filename = File.basename(params[:captures].first)
-    filename = "index.html" if filename.empty?
-    type, content = pull_from_gist(filename)
-    if type && content
-      content_type type
-      content
-    else
-      status 404
-    end
+  filename = File.basename(params[:captures].first)
+  filename = "index.html" if filename.empty?
+  type, content = pull_from_gist(filename)
+  if type && content
+    content_type type
+    content
   else
-    haml :no_gist_id
+    status 404
   end
 end
 
@@ -42,19 +38,7 @@ def pull_from_gist(filename)
 end
 
 def files
-  @files ||= if gist_id == 'local'
-    Hash[*Dir.glob(File.dirname(__FILE__) + "/local/*").map { |f| [File.basename(f),{'content' => File.read(f)}] }.flatten]
-  else
-    JSON.parse(fetch("https://api.github.com/gists/#{gist_id}")).fetch('files')
-  end
+  @files ||= Hash[*Dir.glob(File.dirname(__FILE__) + "/source/*").map { |f| [File.basename(f),{'content' => File.read(f)}] }.flatten]
 rescue KeyError
   {}
-end
-
-def fetch(url)
-  Curl::Easy.perform(url) { |e| e.follow_location = true }.body_str
-end
-
-def gist_id
-  @gist_id ||= request.host[/^(\w+)\./, 1]
 end
