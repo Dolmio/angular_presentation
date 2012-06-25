@@ -29,7 +29,7 @@ def pull_from_gist(filename)
   else
     compiler, source = COMPILERS[extension.to_sym].map do |source_ext, compiler|
       found_sources = files.keys & ["#{File.basename(filename,".*")}.#{source_ext}", "#{filename}.#{source_ext}"]
-      !found_sources.empty? && [compiler, found_sources.first]
+      found_sources.empty? ? nil : [compiler, found_sources.first]
     end.compact.first
     if compiler && source
       [TYPES[extension.to_sym],compiler[files[source]['content']]]
