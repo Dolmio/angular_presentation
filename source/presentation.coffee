@@ -72,14 +72,24 @@ module.directive "slideCode", ->
     value = attrs.slideCode
     element.addClass "brush: js; toolbar: false;"
     element.addClass "haml-script: true;"  unless value is "js"
-    element.attr "ng-non-bindable", ""
 
 module.directive "example", ($http) ->
   restrict: "E"
-  template: "<script type='syntaxhighlighter' slide-code ng-bind='raw'></script><iframe ng-src='{{compiled}}'></iframe>"
+  template: "<script type='syntaxhighlighter' slide-code ng-bind='haml_raw'></script><iframe update-from='html_compiled'></iframe><textarea ng-model='html_compiled'</textarea>"
   scope: {}
   link: (scope, element, attrs) ->
-    scope.source = "/#{attrs.name}.haml"
-    scope.compiled = "/#{attrs.name}.html"
-    $http.get(scope.source).success (data) ->
-      scope.raw = data
+    scope.haml_source = "/#{attrs.name}.haml"
+    scope.html_source = "/#{attrs.name}.html"
+    $http.get(scope.haml_source).success (data) ->
+      scope.haml_raw = data
+    $http.get(scope.html_source).success (data) ->
+      scope.html_compiled = data
+
+module.directive "updateFrom", ->
+  restrict: "A"
+  link: (scope, element, attrs) ->
+    scope.$watch attrs.updateFrom, (val) ->
+      doc = element[0].contentWindow.document
+      doc.open()
+      doc.write(val)
+      doc.close()
