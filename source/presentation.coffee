@@ -71,9 +71,15 @@ module.directive "slideCode", ->
   (scope, element, attrs) ->
     value = attrs.slideCode
     element.addClass "brush: js; toolbar: false;"
-    element.addClass "html-script: true;"  unless value is "js"
+    element.addClass "haml-script: true;"  unless value is "js"
     element.attr "ng-non-bindable", ""
 
-module.directive "example", ->
+module.directive "example", ($http) ->
   restrict: "E"
+  template: "<script type='syntaxhighlighter' slide-code ng-bind='raw'></script><iframe ng-src='{{compiled}}'></iframe>"
+  scope: {}
   link: (scope, element, attrs) ->
+    scope.source = "/#{attrs.name}.haml"
+    scope.compiled = "/#{attrs.name}.html"
+    $http.get(scope.source).success (data) ->
+      scope.raw = data
