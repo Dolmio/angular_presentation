@@ -15,14 +15,16 @@
             SyntaxHighlighter.all();
   %body(ng-app="PresentationModule" ng-controller="PresentationController")
     #intro
-      %h1 AngularJS
-      %h2 Elliott Sprehn
-      %h3(ng-show="isAfter()") @ElliottZ / esprehn (at) gmail.com
+      %h1 Sup, AngularJS?
+      %h2 Glen Maddern
+      %h3 @glenmaddern
     %p#counter(ng-show="isInsideDeck()")
       %a(href="#/slides/1") «
       ((activeSlide + 1)) / ((totalSlides))
       %a(href="#/slides/((totalSlides))") »
     %deck(current="activeSlide" total="totalSlides")
+      %slide
+        %example#example_one
       %slide
         %h2 Remember Web 1.0 ?
         %ol
