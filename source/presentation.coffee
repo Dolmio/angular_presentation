@@ -32,7 +32,7 @@ module = angular.module("PresentationModule", [])
 module.service "keyboard", ($rootScope) ->
   @on = (keyCode, callback) ->
     $(window).keydown (e) ->
-      $rootScope.$apply callback  if e.keyCode is keyCode
+      $rootScope.$apply callback  if e.keyCode is keyCode && e.target.tagName == "BODY"
 
 module.directive "deck", ->
   link = ($scope, element, attrs) ->
@@ -75,7 +75,7 @@ module.directive "slideCode", ->
 
 module.directive "example", ($http) ->
   restrict: "E"
-  template: "<script type='syntaxhighlighter' slide-code ng-bind='haml_raw'></script><iframe update-from='html_compiled'></iframe><textarea ng-model='html_compiled'</textarea>"
+  template: "<textarea ng-model='html_compiled'></textarea><iframe update-from='html_compiled'></iframe>"
   scope: {}
   link: (scope, element, attrs) ->
     scope.haml_source = "/#{attrs.name}.haml"
@@ -88,8 +88,8 @@ module.directive "example", ($http) ->
 module.directive "updateFrom", ->
   restrict: "A"
   link: (scope, element, attrs) ->
+    doc = element[0].contentWindow.document
     scope.$watch attrs.updateFrom, (val) ->
-      doc = element[0].contentWindow.document
       doc.open()
       doc.write(val)
       doc.close()
