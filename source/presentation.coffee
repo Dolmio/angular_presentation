@@ -70,18 +70,13 @@ module.directive "deck", ->
 module.directive "slideCode", ->
   (scope, element, attrs) ->
     value = attrs.slideCode
-    element.addClass "brush: js; toolbar: false;"
-    element.addClass "haml-script: true;"  unless value is "js"
 
 module.directive "example", ($http) ->
   restrict: "E"
   template: "<textarea ng-model='html_compiled'></textarea><iframe update-from='html_compiled'></iframe>"
   scope: {}
   link: (scope, element, attrs) ->
-    scope.haml_source = "/#{attrs.name}.haml"
     scope.html_source = "/#{attrs.name}.html"
-    $http.get(scope.haml_source).success (data) ->
-      scope.haml_raw = data
     $http.get(scope.html_source).success (data) ->
       scope.html_compiled = data
 
@@ -94,5 +89,12 @@ module.directive "updateFrom", ->
       doc.write(val)
       doc.close()
 
-module.directive "snippet", ->
+module.directive "snippet", ($http) ->
   restrict: "E"
+  template: "<script type='syntaxhighlighter' ng-bind='source'></script>"
+  replace: true
+  scope: {}
+  link: (scope, element, attrs) ->
+    element.addClass "brush: #{attrs.highlight}; toolbar: false;"
+    $http.get("#{attrs.source}").success (data) ->
+      scope.source = data

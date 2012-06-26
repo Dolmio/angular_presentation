@@ -9,5 +9,9 @@
   $http.get("/comments_#{$scope.post.id}.json").success (data) ->
     $scope.comments = data.comments
 
-  $scope.upboat = ->
-    console.log
+  $scope.upboat = (comment) ->
+    alert("You upvoted #{comment.the_douchebags_name}'s comment.")
+  $scope.report = (comment) ->
+    alert("#{comment.the_douchebags_name} got bit.")
+
+
