@@ -1,0 +1,12 @@
+{"posts": [
+  {
+    "id": 1,
+    "title": "Angular rulez",
+    "content": "Cause it's rad. QED."
+  },
+  {
+    "id": 2,
+    "title": "Other frameworks droolz",
+    "content": "Cause they sux. Actually, they're ok. Let's not be haters."
+  }
+]}

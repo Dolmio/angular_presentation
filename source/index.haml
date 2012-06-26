@@ -45,7 +45,7 @@
             %code
               $('a.something').click (e) ->
               &nbsp;&nbsp;e.preventDefault(); i.ma(stupid)
-          %li Ember's doing the same thing (with handlebars extension), and hipsters love it.
+          %li Ember's doing a similar thing (with handlebars extension), and hipsters love it.
       %slide
         %img.screenshot(ng-repeat="company in ['microsoft','salesforce','ebay','php']" ng-src="/images/bad_{{company}}.png")
       %slide
@@ -57,5 +57,9 @@
           %li Controllers scoped to DOM
           %li Directives extend HTML
           %li Services are your batarangs. Or your bat-utility-belt. Whatever. Anyway they're useful.
+      %slide
+        %h2 Controllers
+        %example(name="example_three")
+        -#%snippet(name="example_three" langs="coffee html")
 
 

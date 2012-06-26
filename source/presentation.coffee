@@ -93,3 +93,6 @@ module.directive "updateFrom", ->
       doc.open()
       doc.write(val)
       doc.close()
+
+module.directive "snippet", ->
+  restrict: "E"
