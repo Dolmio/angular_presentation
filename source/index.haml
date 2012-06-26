@@ -24,23 +24,24 @@
       %a(href="#/slides/((totalSlides))") »
     %deck(current="activeSlide" total="totalSlides")
       %slide
+        %h2 What is AngularJS?
+        %ul
+          %li It's The Future&trade;, like Rails was back in '05 (imo)
+          %li Started in 2009, but just went 1.0.0 (then quickly 1.0.1, sound familiar?)
+          %li Run by three Googlers, but not very Googly
+      %slide
         %h2 Simplest example
         %example(name="example_one")
       %slide
         %h2 Live updating
         %example(name="example_two")
       %slide
-        %h2 Wait
+        %h2 Objection!
         %ul
           %li But, but, putting JS in HTML is bad!
           %li Oh wait, no it isn't.
       %slide
-        %h2 The old days (actually right now)
-        %ul
-          %li http://www.microsoft.com/en-us/default.aspx
-          %li http://php.net/docs.php
-          %li http://www.catchoftheday.com.au/index.php
-          %li http://www.ebay.com.au/sch/i.html?_nkw=lolwtf
+        %img.screenshot(ng-repeat="company in ['microsoft','salesforce','ebay','php']" ng-src="/images/bad_{{company}}.png")
       %slide
         %h2 HTML is a DSL, why not improve it?
         %ul
