@@ -11,6 +11,7 @@
           %script(src="/syntaxhighlighter/shCore.js")
           %script(src="/syntaxhighlighter/shBrushJScript.js")
           %script(src="/syntaxhighlighter/shBrushXml.js")
+          %script(src="/shBrushCoffeeScript.js")
           :javascript
             SyntaxHighlighter.all();
   %body(ng-app="PresentationModule" ng-controller="PresentationController")
@@ -61,8 +62,8 @@
       %slide
         %h2 Controllers
         %snippet(source="/example_three_pt1.html" highlight="html")
-        %snippet(source="/example_three_pt1.json" highlight="js")
-        %snippet(source="/example_three_pt1.coffee" highlight="js")
+        %hr
+        %snippet(source="/example_three_pt1.coffee" highlight="coffeescript")
       %slide
         %h2 Controllers
         %example(name="example_three")
