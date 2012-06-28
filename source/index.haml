@@ -78,9 +78,10 @@
           %li Oh wait, no it isn't.
           %li
             Doing this a hundred times is bad:
-            %code
-              $('a.something').click (e) ->
-              &nbsp;&nbsp;e.preventDefault(); i.ma(stupid)
+            %script(type='syntaxhighlighter' class="brush: coffeescript; toolbar: false;")
+              :plain
+                $('a.something').click (e) ->
+                  e.preventDefault(); i.ma(stupid)
           %li Ember's doing a similar thing (with handlebars extension), and hipsters love it.
       %slide
         %img.screenshot(ng-repeat="company in ['microsoft','salesforce','ebay','php']" ng-src="/images/bad_{{company}}.png")
