@@ -42,9 +42,9 @@ module.directive "deck", ->
         slide.style.zIndex = -i  if $(slide).hasClass("next")
     slides = element.find("slide")
     restack()
-    $scope.total slides.length
-    $scope.current -1
-    $scope.$watch "current()", (value) ->
+    $scope.total = slides.length
+    $scope.current = -1
+    $scope.$watch "current", (value) ->
       slides.each (i, slide) ->
         $(slide).removeClass "previous current next"
         if i < value
@@ -55,15 +55,15 @@ module.directive "deck", ->
           $(slide).addClass "next"
 
       if value < -1 or isNaN(value)
-        $scope.current -1
+        $scope.current = -1
       else if value > slides.length
-        $scope.current slides.length
+        $scope.current = slides.length
       else
         restack()
   restrict: "E"
   scope:
-    current: "accessor"
-    total: "accessor"
+    current: '='
+    total: '='
 
   link: link
 
