@@ -21,7 +21,7 @@
       %h3 @glenmaddern
     %p#counter(ng-show="isInsideDeck()")
       %a(href="#/slides/1") «
-      ((activeSlide + 1)) / ((totalSlides))
+      {{activeSlide + 1}} / {{totalSlides}}
       %a(href="#/slides/((totalSlides))") »
     %deck(current="activeSlide" total="totalSlides")
       %slide
@@ -60,8 +60,16 @@
         %hr
         %snippet(source="/example_collections_snippet.html" highlight="html")
       %slide
-        %h2 Controllers
+        %h2 Collections
         %example(name="example_collections")
+      %slide
+        %h2 Data!
+        %snippet(source="/example_data.coffee" highlight="coffeescript")
+        %hr
+        %snippet(source="/example_data_snippet.html" highlight="html")
+      %slide
+        %h2 Data!
+        %example(name="example_data")
       %slide
         %h2 Objection!
         %ul
@@ -77,14 +85,17 @@
         %img.screenshot(ng-repeat="company in ['microsoft','salesforce','ebay','php']" ng-src="/images/bad_{{company}}.png")
 
       %slide
-        %h2 Data
-        %snippet(source="/example_four.coffee" highlight="coffeescript")
-      %slide
-        %h2 Data
-        %example(name="example_four")
-      %slide
-        %h2 Directives
-        %snippet(source="/example_five.coffee" highlight="coffeescript")
-      %slide
-        %h2 Data
-        %example(name="example_five")
+        %h2 HTML is a DSL. Make it pro.
+        %ul
+          %li New tags! New attributes! New all the things!
+          %li Defined using Directives
+          %li Keeps the DOM out of your controllers
+          %li
+            Invoked how you like:
+            %script(type='syntaxhighlighter' class="brush: html; toolbar: false;")
+              :plain
+                <my-tag is="pro">
+                <span my-tag="pro">
+                <span my:tag="pro">
+                <span class="my-tag: pro;">
+                <span data-my-tag="pro">

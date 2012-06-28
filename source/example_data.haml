@@ -1,0 +1,13 @@
+!!!
+%html(ng-app)
+  %head
+    %meta(charset="UTF-8")
+    %script(src="http://code.angularjs.org/angular-1.0.1.min.js")
+    %script(src="/example_data.js")
+    %style * { font-size: 24pt; line-height: 1.6; }
+    %link(rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css")
+  %body(ng-controller="BodyController")
+    %h1 There are {{posts.length}} articles:
+    %article(ng-repeat="post in posts")
+      %h2 {{post.title}}
+      %p.lead {{post.content}}

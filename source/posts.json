@@ -8,5 +8,15 @@
     "id": 2,
     "title": "Other frameworks droolz",
     "content": "Cause they sux. Actually, they're ok. Let's not be haters."
+  },
+  {
+    "id": 3,
+    "title": "Hey did you hear about AngularJS",
+    "content": "Yeah! Get your towels ready it's about to go down."
+  },
+  {
+    "id": 4,
+    "title": "You look great.",
+    "content": "Cheers!"
   }
 ]}
