@@ -1,4 +1,4 @@
-angular.module('roro')
+angular.module('roro', [])
   .directive 'roroTap', ->
     (scope, element, attrs) ->
       tapping = false

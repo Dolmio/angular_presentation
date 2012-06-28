@@ -19,6 +19,7 @@
       %h1 Sup, AngularJS?
       %h2 Glen Maddern
       %h3 @glenmaddern
+      %h3 glen@goodfil.ms
     %p#counter(ng-show="isInsideDeck()")
       %a(href="#/slides/1") «
       {{activeSlide + 1}} / {{totalSlides}}
@@ -105,3 +106,20 @@
         %snippet(source="/example_tap_snippet.html" highlight="html")
         %hr
         %snippet(source="/example_tap.coffee" highlight="coffeescript")
+
+      %slide
+        %h2 Live iframe
+        %example(name="example_iframe")
+
+      %slide
+        %h2 Live iframe
+        %snippet(source="/example_iframe.coffee" highlight="coffeescript")
+
+      %slide
+        %h2 Go forth!
+        %ul
+          %li No time to talk about routing/services/etc
+          %li Go to http://angularjs.org/
+          %li Watch the videos!
+          %li Hit me up on twitter!
+          %li This presentation (which is an Angular app, of course) is available at https://github.com/geelen/angular_presentation

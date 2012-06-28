@@ -1,3 +1,9 @@
+###
+Original code by Elliott Sprehn. Thanks Elliott!
+
+His presentation here: https://github.com/esprehn/html5la/tree/cfobjective2012
+###
+
 module = angular.module("PresentationModule", [])
 
 @PresentationController = ($scope, $location, keyboard) ->
@@ -67,9 +73,13 @@ module.directive "deck", ->
 
   link: link
 
-module.directive "slideCode", ->
-  (scope, element, attrs) ->
-    value = attrs.slideCode
+###
+
+This is my code from here on.
+
+All this is available at: https://github.com/geelen/angular_presentation
+
+###
 
 module.directive "example", ($http) ->
   restrict: "E"
