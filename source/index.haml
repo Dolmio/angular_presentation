@@ -32,10 +32,36 @@
           %li Started in 09, run by three Googlers, but not very Googly
       %slide
         %h2 Simplest example
-        %example(name="example_one")
+        %example(name="example_simplest")
       %slide
         %h2 Live updating
-        %example(name="example_two")
+        %example(name="example_live")
+      %slide
+        %h2 MVC? MVVM? Wat?
+        %ul
+          %li Angular calls itself MVC but I don't buy it.
+          %li Controllers, Directives, Services
+          %li Plain-old-JS objects for models instead of a (potentially fat) Model layer.
+          %li Controllers scoped to DOM
+          %li Directives extend HTML
+          %li Services are your batarangs. Or your bat-utility-belt. Whatever. Anyway they're useful.
+      %slide
+        %h2 Scope
+        %ul
+          %li The communication between a Controller and the DOM
+          %li The simple example before was defining 'bro' on Angular's rootScope
+          %li Let's define our own:
+      %slide
+        %h2 Controller + Scope
+        %example(name="example_scope")
+      %slide
+        %h2 Collections
+        %snippet(source="/example_collections.coffee" highlight="coffeescript")
+        %hr
+        %snippet(source="/example_collections_snippet.html" highlight="html")
+      %slide
+        %h2 Controllers
+        %example(name="example_collections")
       %slide
         %h2 Objection!
         %ul
@@ -49,21 +75,16 @@
           %li Ember's doing a similar thing (with handlebars extension), and hipsters love it.
       %slide
         %img.screenshot(ng-repeat="company in ['microsoft','salesforce','ebay','php']" ng-src="/images/bad_{{company}}.png")
-      %slide
-        %h2 MVC? MVVM? XYZ?
-        %ul
-          %li Angular calls itself MVC but I don't buy it.
-          %li Controllers, Directives, Services
-          %li Plain-old-JS objects for models instead of a (potentially fat) Model layer.
-          %li Controllers scoped to DOM
-          %li Directives extend HTML
-          %li Services are your batarangs. Or your bat-utility-belt. Whatever. Anyway they're useful.
 
       %slide
-        %h2 Controllers
-        %snippet(source="/example_three_snippet.html" highlight="html")
-        %hr
-        %snippet(source="/example_three.coffee" highlight="coffeescript")
+        %h2 Data
+        %snippet(source="/example_four.coffee" highlight="coffeescript")
       %slide
-        %h2 Controllers
-        %example(name="example_three")
+        %h2 Data
+        %example(name="example_four")
+      %slide
+        %h2 Directives
+        %snippet(source="/example_five.coffee" highlight="coffeescript")
+      %slide
+        %h2 Data
+        %example(name="example_five")

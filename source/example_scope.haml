@@ -1,0 +1,13 @@
+!!!
+%html(ng-app)
+  %head
+    %script(src="http://code.angularjs.org/angular-1.0.1.min.js")
+    %style * { font-size: 24pt; }
+    %script
+      :plain
+        BodyController = function($scope) {
+          $scope.bro = "whatever your name is";
+        };
+  %body(ng-controller="BodyController")
+    %input(ng-model="bro" size="30" placeholder="What's your name, bro?")
+    Come at me, {{bro}}!

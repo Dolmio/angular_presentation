@@ -1,5 +1,3 @@
-# using @ to make it global
-# $scope is your shared namespace with the HTML
 # $http is a service, part of Angular
 @MainController = ($scope, $http) ->
   $http.get("/posts.json").success (data) ->
@@ -13,5 +11,3 @@
     alert("You upvoted #{comment.the_douchebags_name}'s comment.")
   $scope.report = (comment) ->
     alert("#{comment.the_douchebags_name} got bit.")
-
-
